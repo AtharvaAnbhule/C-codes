@@ -1,0 +1,125 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<stdlib.h>
+ using namespace std;
+class account{
+    private:
+    string name;
+    int accno;
+    string atype;
+    public:
+    void getAccountDetails(){
+        cout<<"\nEnter customer name-:";
+        cin>>name;
+        cout<<"Enter account number-:";
+        cin>>accno;
+        cout<<"Enter Account type-:";
+        cin>>atype;
+    }
+    void displayDetails(){
+        cout<<"\n\n Customer name"<<name;
+        cout<<"\n\nAccount nmumber"<<accno;
+        cout<<"\n\nAccount type"<<atype;
+    }
+    
+};
+class current_account:public account{
+    private:
+    float balance;
+    public:
+    void c_display(){
+        cout<<"\nBalance"<<balance;
+    }
+    void c_deposit(){
+        float deposit;
+        cout<<"\nEnter amount to deposit";
+        cin>>deposit;
+        balance=balance+deposit;
+    }
+    void c_withdraw(){
+        float withdraw;
+        cout<<"\n\nBalance"<<balance;
+        cout<<"\n\nEntrer the amount to withdraw";
+        cin>>withdraw;
+        if(balance>1000){
+            balance=balance-withdraw;
+            cout<<"\n\nBalance amount after withdraw is-:"<<balance;
+            
+        }else{
+            cout<<"\n\nInsuffiecient balance";
+        }
+    }
+};
+class savings_account:public account{
+    private:
+    float balance;
+    public:
+    void c_display(){
+        cout<<"\nBalance"<<balance;
+    }
+    void c_deposit(){
+        float deposit;
+        cout<<"\nEnter amount to deposit";
+        cin>>deposit;
+        balance=balance+deposit;
+    }
+    void c_withdraw(){
+        float withdraw;
+        cout<<"\n\nBalance"<<balance;
+        cout<<"\n\nEntrer the3 amount to withdraw";
+        cin>>withdraw;
+        if(balance>1000){
+            balance=balance-withdraw;
+            cout<<"\n\nBalance amount after withdraw is-:"<<balance;
+            
+        }else{
+            cout<<"\n\nInsuffiecient balance";
+        }
+    }
+};
+int main() {
+    // Write C++ code here
+    account a1;
+    current_account c1;
+    savings_account s1;
+    cout<<"Enter the account details:-";
+    a1.getAccountDetails();
+     char acctype;
+    cout<<"Enter c for current and s for saving account-:";
+    cin>>acctype;
+    int cases;
+    cout<<"Enter the number of cases-:"<<endl;
+    cin>>cases;
+    switch(cases){
+    case 1:
+    if(acctype=='c'){
+       cout<<"the amount to deposit in current account is-:";
+       c1.c_deposit();c1.c_display();}
+       else{
+           cout<<"it is current account";}
+       break;
+    case 2:
+    if(acctype=='c'){
+       cout<<"the amount after withdraw in current account is-:";
+       c1.c_withdraw();}
+       else{cout<<"it is current account";}
+       break;
+    case 3:
+    if(acctype=='s'){
+      cout<<"the amount to deposit in savings account is-:";
+       s1.c_deposit();}
+       else{cout<<"it is savings account";}
+       break;
+    case 4:
+    if(acctype=='s'){
+       cout<<"the amount after withdraw in savings account is-:";
+       s1.c_withdraw();}
+       else{cout<<"it is savings account";}
+       break;
+    case 5:
+       cout<<"the total amount in account is-:";
+       a1.displayDetails();
+       break;
+    }
+    return 0;
+}
